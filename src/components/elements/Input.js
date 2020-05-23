@@ -85,8 +85,13 @@ const Input = ({
           value={value}
           placeholder={placeholder}
           rows={type === 'textarea' ? rows : null}
+          ref={props.register}
         />
-        {children}
+        <div
+
+        >
+          {children}
+        </div>
       </div>
       {hint && <FormHint status={status}>{hint}</FormHint>}
     </>
