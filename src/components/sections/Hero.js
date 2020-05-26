@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import { SectionProps } from '../../utils/SectionProps';
 import ButtonGroup from '../elements/ButtonGroup';
 import Button from '../elements/Button';
-import Image from '../elements/Image';
-import Modal from '../elements/Modal';
+import ReactGA from 'react-ga';
+
 
 const propTypes = {
   ...SectionProps.types
@@ -70,10 +70,20 @@ const Hero = ({
               </p>
               <div className="reveal-from-bottom" data-reveal-delay="600">
                 <ButtonGroup>
-                  <Button tag="a" color="primary" wideMobile href="#signup">
+                  <Button tag="a" color="primary" wideMobile href="#signup"
+                    onClick={() => ReactGA.event({
+                      category: 'Info',
+                      action: 'HeroGetStarted'
+                    })}
+                  >
                     Get started
                     </Button>
-                  <Button tag="a" color="dark" wideMobile href="#learn">
+                  <Button tag="a" color="dark" wideMobile href="#learn"
+                    onClick={() => ReactGA.event({
+                      category: 'Info',
+                      action: 'HeroLearnMore'
+                    })}
+                  >
                     Learn More
                     </Button>
                 </ButtonGroup>

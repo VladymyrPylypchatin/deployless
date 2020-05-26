@@ -57,7 +57,7 @@ const Cta = ({
         >
           <div className="cta-slogan">
             <h3 className="m-0">
-              Join early adopters
+              Get early access
               </h3>
           </div>
           <div className="cta-action">

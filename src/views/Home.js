@@ -8,6 +8,8 @@ import HowItWorks from '../components/sections/HowItWorks';
 import Cta from '../components/sections/Cta';
 import emailjs from 'emailjs-com';
 import { v4 } from 'uuid';
+import ReactGA from 'react-ga';
+
 
 const Home = () => {
 
@@ -16,6 +18,11 @@ const Home = () => {
   }, []);
 
   const submitHandler = async (value) => {
+    ReactGA.event({
+      category: 'lead',
+      action: 'SignupAttempt'
+    })
+
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
       const id = toast.info('Sending');
 
@@ -30,8 +37,16 @@ const Home = () => {
         type: 'success'
       });
 
+      ReactGA.event({
+        category: 'lead',
+        action: 'SignupSuccess'
+      })
     } else {
       toast.error('Please check your email');
+      ReactGA.event({
+        category: 'lead',
+        action: 'SignupError'
+      })
     }
   }
 
